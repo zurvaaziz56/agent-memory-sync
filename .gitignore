@@ -1,0 +1,30 @@
+# Secrets / local env
+.env
+.env.*
+
+# Reconcile output (archives + log) if a test run happens inside the repo
+.memory-conflicts/
+.memory-sync/
+
+# Logs
+logs/
+*.log
+
+# Filled-in, machine-specific copies of the launchd template
+*.local.plist
+
+# Sync-tool artefacts
+.stfolder/
+.stversions/
+*.sync-conflict-*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc

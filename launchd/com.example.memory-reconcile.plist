@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  TEMPLATE: daily memory reconcile job for macOS launchd.
+
+  Before loading, replace every ABSOLUTE-PATH placeholder below with a full path
+  (launchd does not expand ~ or $HOME):
+    /path/to/python3                       e.g. the output of `command -v python3`
+    /path/to/memory-reconcile.py           where you copied the script
+    /path/to/workspace/.memory-sync        the real (synced) memory folder
+    /path/to/memory-reconcile.launchd.log  any writable log location
+
+  The third argument (the memory folder) can be dropped if you set MEMORY_DIR instead:
+    <key>EnvironmentVariables</key><dict><key>MEMORY_DIR</key><string>/path/to/workspace/.memory-sync</string></dict>
+
+  Optionally rename the label (and the file) from com.example.* to your own reverse-DNS name.
+  Install: copy to ~/Library/LaunchAgents/ and load it (see docs/setup-mac.md).
+-->
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.example.memory-reconcile</string>
+  <key>ProgramArguments</key><array>
+    <string>/path/to/python3</string>
+    <string>/path/to/memory-reconcile.py</string>
+    <string>/path/to/workspace/.memory-sync</string>
+  </array>
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>3</integer><key>Minute</key><integer>30</integer></dict>
+  <key>StandardOutPath</key><string>/path/to/memory-reconcile.launchd.log</string>
+  <key>StandardErrorPath</key><string>/path/to/memory-reconcile.launchd.log</string>
+  <key>RunAtLoad</key><false/>
+</dict></plist>
